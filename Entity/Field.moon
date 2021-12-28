@@ -1,6 +1,7 @@
 class Field
     new: (line) =>
-        @type, @name = line\match("-%s*([^,]+)%s+([^,]+)%s*")
+        visibility, @type, @name = line\match("([-+])%s*([^,]+)%s+([^,]+)%s*")
         @isReference = false
+        @public = visibility == "+"
 
 return Field

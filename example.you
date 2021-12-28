@@ -16,11 +16,11 @@ FirebaseCardMgr : ICardMgr
 - FirebaseDataBase firebaseDb
 
 ICard
-+ void getName()
-+ void getCardId()
-+ void getType()
-+ void getImage()
-+ void getAttributes()
++ getName()
++ getCardId()
++ getType()
++ getImage()
++ getAttributes()
 
 WeetbixCard : ICard
 - IImageLoader imageloader

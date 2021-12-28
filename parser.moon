@@ -10,12 +10,14 @@ Parser =
         l = file\read("*l")
         while l    
             switch string.sub(l, 1, 1)
-                when "-"
-                    -- Field
-                    table.insert(parsed[currentClass].fields, Field(l))
-                when "+"
-                    -- Method
-                    table.insert(parsed[currentClass].methods, Method(l))
+                when "-", "+"
+                    if string.sub(l, -2) == "()"
+                        -- Method
+                        table.insert(parsed[currentClass].methods, Method(l))
+                    else
+                        -- Field
+                        table.insert(parsed[currentClass].fields, Field(l))
+                        
                 when "#"
                     nil -- Comment
                 when ""
