@@ -14,3 +14,4 @@ Dog : Animal
 Cat : Animal
 - void meow()
 ```
+![Output UML](example.png)

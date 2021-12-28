@@ -1,37 +1,12 @@
-AActivity
-- ICardMgr cardMgr
-
-MainActivity : AActivity
-+ void showListActivity()
-+ void showDetailsActivity()
-+ void showSearchActivity()
-
-ListActivity : AActivity
-DetailsActivity : AActivity
-
-ICardMgr
-+ ICard getCards()
-
-FirebaseCardMgr : ICardMgr
-- FirebaseDataBase firebaseDb
-
-ICard
+IAnimal
+- int legs
+- string name 
 + getName()
-+ getCardId()
-+ getType()
-+ getImage()
-+ getAttributes()
 
-WeetbixCard : ICard
-- IImageLoader imageloader
-- int height
-- int weight
-- int testCaps
-- int testPoints
-- int allBlacksNo
-- int successPercent
-- int weetBixEaten
+# A dog is an animal
+Dog : IAnimal
++ void bark()
 
-IImageLoader
-+ void getImage()
-LocalStorageImageLoader : IImageLoader
+# A cat is an animal
+Cat : IAnimal
++ void meow()
