@@ -1,3 +1,4 @@
 #!/bin/sh
-moonc *.moon Entity/*.moon
-luajit main.lua example.you
+moonc -t out/ *.moon Entity/*.moon
+cd out
+luajit main.lua ../example.you

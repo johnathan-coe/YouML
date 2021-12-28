@@ -24,7 +24,7 @@ Output =
 
             for _, field in ipairs(c.fields)
                 if field.isReference
-                    add "#{name} -> #{field.type}\n"
+                    add "#{name} -> #{field.type} [dir=none]\n"
 
         add "}\n"
 

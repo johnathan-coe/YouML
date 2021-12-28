@@ -34,6 +34,4 @@ WeetbixCard : ICard
 
 IImageLoader
 + void getImage()
-
 LocalStorageImageLoader : IImageLoader
-+ void getImage()
