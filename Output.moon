@@ -20,11 +20,17 @@ Output =
             add "}\"\n]\n"
 
             if c.extends
-                add "#{name} -> #{c.extends.name}\n"
+                add "#{name} -> #{c.extends.name} [arrowhead=onormal"
+                
+                type = string.sub(c.extends.name,1, 1)
+                if type == "I"
+                    add ", style=dashed"
+
+                add "]\n"
 
             for _, field in ipairs(c.fields)
                 if field.isReference
-                    add "#{name} -> #{field.type} [dir=none]\n"
+                    add "#{name} -> #{field.type} [arrowhead=odiamond]\n"
 
         add "}\n"
 
