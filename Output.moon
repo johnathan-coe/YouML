@@ -20,7 +20,7 @@ Output =
             add "}\"\n]\n"
 
             if c.extends
-                add "#{name} -> #{c.extends}\n"
+                add "#{name} -> #{c.extends.name}\n"
 
             for _, field in ipairs(c.fields)
                 if field.type != "int"

@@ -28,6 +28,12 @@ Parser =
 
             l = file\read("*l")
 
+        for _, c in pairs(parsed)
+            if c.extends
+                c.extends = parsed[c.extends]
+                for _, m in ipairs(c.extends.methods)
+                    table.insert(c.methods, m)
+                
         return parsed
 
 return Parser

@@ -16,7 +16,7 @@ label = "{DetailsActivity||}"
 ]
 DetailsActivity -> AActivity
 FirebaseCardMgr [
-label = "{FirebaseCardMgr|- firebaseDb : FirebaseDataBase\l|}"
+label = "{FirebaseCardMgr|- firebaseDb : FirebaseDataBase\l|+ getCards() : ICard\l}"
 ]
 FirebaseCardMgr -> ICardMgr
 FirebaseCardMgr -> FirebaseDataBase
@@ -25,7 +25,7 @@ label = "{AActivity|- cardMgr : ICardMgr\l|}"
 ]
 AActivity -> ICardMgr
 WeetbixCard [
-label = "{WeetbixCard|- imageloader : IImageLoader\l- height : int\l- weight : int\l- testCaps : int\l- testPoints : int\l- allBlacksNo : int\l- successPercent : int\l- weetBixEaten : int\l|}"
+label = "{WeetbixCard|- imageloader : IImageLoader\l- height : int\l- weight : int\l- testCaps : int\l- testPoints : int\l- allBlacksNo : int\l- successPercent : int\l- weetBixEaten : int\l|+ getName() : void\l+ getCardId() : void\l+ getType() : void\l+ getImage() : void\l+ getAttributes() : void\l}"
 ]
 WeetbixCard -> ICard
 WeetbixCard -> IImageLoader
@@ -33,7 +33,7 @@ ICard [
 label = "{ICard||+ getName() : void\l+ getCardId() : void\l+ getType() : void\l+ getImage() : void\l+ getAttributes() : void\l}"
 ]
 LocalStorageImageLoader [
-label = "{LocalStorageImageLoader||+ getImage() : void\l}"
+label = "{LocalStorageImageLoader||+ getImage() : void\l+ getImage() : void\l}"
 ]
 LocalStorageImageLoader -> IImageLoader
 IImageLoader [
