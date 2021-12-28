@@ -23,7 +23,7 @@ Output =
                 add "#{name} -> #{c.extends.name}\n"
 
             for _, field in ipairs(c.fields)
-                if field.type != "int"
+                if field.isReference
                     add "#{name} -> #{field.type}\n"
 
         add "}\n"

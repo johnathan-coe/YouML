@@ -33,6 +33,10 @@ Parser =
                 c.extends = parsed[c.extends]
                 for _, m in ipairs(c.extends.methods)
                     table.insert(c.methods, m)
+            
+            for _, f in ipairs(c.fields)
+                if parsed[f.type]
+                    f.isReference = true
                 
         return parsed
 
