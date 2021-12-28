@@ -1,0 +1,39 @@
+AActivity
+- ICardMgr cardMgr
+
+MainActivity : AActivity
++ void showListActivity()
++ void showDetailsActivity()
++ void showSearchActivity()
+
+ListActivity : AActivity
+DetailsActivity : AActivity
+
+ICardMgr
++ ICard getCards()
+
+FirebaseCardMgr : ICardMgr
+- FirebaseDataBase firebaseDb
+
+ICard
++ void getName()
++ void getCardId()
++ void getType()
++ void getImage()
++ void getAttributes()
+
+WeetbixCard : ICard
+- IImageLoader imageloader
+- int height
+- int weight
+- int testCaps
+- int testPoints
+- int allBlacksNo
+- int successPercent
+- int weetBixEaten
+
+IImageLoader
++ void getImage()
+
+LocalStorageImageLoader : IImageLoader
++ void getImage()

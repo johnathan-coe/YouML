@@ -1,0 +1,42 @@
+digraph G {
+node [ shape = "record" ]
+ListActivity [
+label = "{ListActivity||}"
+]
+ListActivity -> AActivity
+MainActivity [
+label = "{MainActivity||+ showListActivity() : void\l+ showDetailsActivity() : void\l+ showSearchActivity() : void\l}"
+]
+MainActivity -> AActivity
+ICardMgr [
+label = "{ICardMgr||+ getCards() : ICard\l}"
+]
+DetailsActivity [
+label = "{DetailsActivity||}"
+]
+DetailsActivity -> AActivity
+FirebaseCardMgr [
+label = "{FirebaseCardMgr|- firebaseDb : FirebaseDataBase\l|}"
+]
+FirebaseCardMgr -> ICardMgr
+FirebaseCardMgr -> FirebaseDataBase
+AActivity [
+label = "{AActivity|- cardMgr : ICardMgr\l|}"
+]
+AActivity -> ICardMgr
+WeetbixCard [
+label = "{WeetbixCard|- imageloader : IImageLoader\l- height : int\l- weight : int\l- testCaps : int\l- testPoints : int\l- allBlacksNo : int\l- successPercent : int\l- weetBixEaten : int\l|}"
+]
+WeetbixCard -> ICard
+WeetbixCard -> IImageLoader
+ICard [
+label = "{ICard||+ getName() : void\l+ getCardId() : void\l+ getType() : void\l+ getImage() : void\l+ getAttributes() : void\l}"
+]
+LocalStorageImageLoader [
+label = "{LocalStorageImageLoader||+ getImage() : void\l}"
+]
+LocalStorageImageLoader -> IImageLoader
+IImageLoader [
+label = "{IImageLoader||+ getImage() : void\l}"
+]
+}
