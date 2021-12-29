@@ -1,2 +1,6 @@
 *.lua
 *.dot
+node_modules/
+bundle.js
+package-lock.json
+YouML.js

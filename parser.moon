@@ -1,14 +1,13 @@
-Class = require("Entity.Class")
-Method = require("Entity.Method")
-Field = require("Entity.Field")
+Class = require("Entity/Class")
+Method = require("Entity/Method")
+Field = require("Entity/Field")
 
 Parser =
-    parse: (file) ->
+    parse: (string) ->
         parsed = {}
         currentClass = ""
 
-        l = file\read("*l")
-        while l    
+        for l in string\gmatch("%s*(.-)\n")    
             switch string.sub(l, 1, 1)
                 when "-", "+"
                     if string.sub(l, -2) == "()"
@@ -27,8 +26,6 @@ Parser =
                     c = Class(l)
                     parsed[c.name] = c
                     currentClass = c.name
-
-            l = file\read("*l")
 
         for _, c in pairs(parsed)
             if c.extends

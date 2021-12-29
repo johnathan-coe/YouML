@@ -1,6 +1,9 @@
 Output =
-    uml: (f, classes) ->
-        add = f\write
+    uml: (classes) ->
+        lines = {}
+        add = (l) -> {
+            table.insert(lines, l)
+        }
 
         add "digraph G {\n"
         add "node [ shape = \"record\" ]\n"
@@ -37,5 +40,7 @@ Output =
                     add "#{name} -> #{field.type} [arrowhead=odiamond]\n"
 
         add "}\n"
+
+        return table.concat(lines, "")
 
 return Output
