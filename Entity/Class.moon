@@ -1,4 +1,4 @@
-class Class
+return class Class
     new: (line) =>
         @name, @extends = line\match("([^,]+) : ([^,]+)")
         @name = line if not @name
@@ -7,5 +7,3 @@ class Class
 
     toString: =>
         return "#{@name} extends #{@extends}"
-
-return Class

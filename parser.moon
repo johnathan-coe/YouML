@@ -15,12 +15,9 @@ Parser =
                         table.insert(parsed[currentClass].methods, Method(l))
                     else
                         -- Field
-                        table.insert(parsed[currentClass].fields, Field(l))
-                        
-                when "#"
+                        table.insert(parsed[currentClass].fields, Field(l))  
+                when "#", ""
                     nil -- Comment
-                when ""
-                    nil -- Empty line
                 else
                     -- Class
                     c = Class(l)
