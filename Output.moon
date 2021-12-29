@@ -28,16 +28,16 @@ Output =
 
             if c.extends
                 add "#{name} -> #{c.extends.name} [arrowhead=onormal"
-                
-                type = string.sub(c.extends.name,1, 1)
-                if type == "I"
-                    add ", style=dashed"
-
+                add ", style=dashed" if string.sub(c.extends.name,1, 1) == "I"
                 add "]\n"
 
             for _, field in ipairs(c.fields)
                 if field.isReference
                     add "#{name} -> #{field.type} [arrowhead=odiamond]\n"
+
+            for _, method in ipairs(c.methods)
+                if method.isReference
+                    add "#{name} -> #{method.returnType} [arrowhead=odiamond]\n"
 
         add "}\n"
 

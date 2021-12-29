@@ -18,4 +18,4 @@ echo "var YouML = \`" >> YouML.js
 cat ../out/out.min.lua >> YouML.js
 echo "\`" >> YouML.js
 sed -i 's/\\/\\\\/g' YouML.js
-sed -i ':a;N;$!ba;s/\n/\\n/g' YouML.js
+#sed -i ':a;N;$!ba;s/\n/\\n/g' YouML.js

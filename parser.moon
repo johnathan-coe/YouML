@@ -25,14 +25,15 @@ Parser =
                     currentClass = c.name
 
         for _, c in pairs(parsed)
-            if c.extends
-                c.extends = parsed[c.extends]
-                for _, m in ipairs(c.extends.methods)
-                    table.insert(c.methods, m)
+            c.extends = parsed[c.extends] if c.extends
             
             for _, f in ipairs(c.fields)
                 if parsed[f.type]
                     f.isReference = true
+
+            for _, m in ipairs(c.methods)
+                if parsed[m.returnType]
+                    m.isReference = true
                 
         return parsed
 
