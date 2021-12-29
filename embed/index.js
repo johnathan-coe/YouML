@@ -1,8 +1,7 @@
 const { LuaFactory } = require("wasmoon")
 
-let input = document.getElementById("input")
-let submit = document.getElementById("submit")
-let graph = document.getElementById("graph")
+const input = document.getElementById("input")
+const graph = document.getElementById("graph")
 let parser, output
 
 const factory = new LuaFactory()
@@ -25,4 +24,4 @@ function render() {
     });
 }
 
-submit.onclick = render
+input.onkeyup = render

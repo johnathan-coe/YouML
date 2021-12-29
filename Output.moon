@@ -1,3 +1,5 @@
+String = require("Util/String")
+
 Output =
     uml: (classes) ->
         lines = {}
@@ -10,6 +12,9 @@ Output =
         for name, c in pairs(classes)
             addln "#{name} ["
             add "label = \"{#{name}"
+
+            if String.startsWith(name, "I")
+                add "\\l\\<\\<interface\\>\\>"
 
             if #c.fields > 0
                 add "|"
@@ -31,7 +36,7 @@ Output =
 
             if c.extends
                 add "#{name} -> #{c.extends.name} [arrowhead=onormal"
-                add ", style=dashed" if string.sub(c.extends.name,1, 1) == "I"
+                add ", style=dashed" if String.startsWith(c.extends.name, "I")
                 addln "]"
 
             for _, field in ipairs(c.fields)
