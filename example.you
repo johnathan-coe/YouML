@@ -1,12 +1,15 @@
+Owner
+- string name
++ getName()
++ IAnimal pets[]
+
 IAnimal
 - int legs
 - string name 
 + getName()
 
-# A dog is an animal
 Dog : IAnimal
 + void bark()
 
-# A cat is an animal
 Cat : IAnimal
 + void meow()

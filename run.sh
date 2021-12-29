@@ -1,5 +1,5 @@
 #!/bin/sh
-moonc -t out/ *.moon Entity/*.moon
+moonc -t out/ *.moon Entity/*.moon Util/*.moon
 
 cd out
 
