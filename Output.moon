@@ -10,19 +10,21 @@ Output =
 
         for name, c in pairs(classes)
             add "#{name} [\n"
-            add "label = \"{#{name}|"
+            add "label = \"{#{name}"
 
-            for _, field in ipairs(c.fields)
-                add if field.public then "+" else "-"
-                add " #{field.name} : #{field.type}\\l"
-            
-            add "|"
+            if #c.fields > 0
+                add "|"
+                for _, field in ipairs(c.fields)
+                    add if field.public then "+" else "-"
+                    add " #{field.name} : #{field.type}\\l"
 
-            for _, method in ipairs(c.methods)
-                add if method.public then "+" else "-"
-                add " #{method.name}()"
-                add " : #{method.returnType}" if method.returnType
-                add "\\l"
+            if #c.methods > 0
+                add "|"
+                for _, method in ipairs(c.methods)
+                    add if method.public then "+" else "-"
+                    add " #{method.name}()"
+                    add " : #{method.returnType}" if method.returnType
+                    add "\\l"
 
             add "}\"\n]\n"
 
