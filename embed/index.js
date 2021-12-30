@@ -19,6 +19,7 @@ async function run(lua) {
 function render() {
     const out = parser.parse(input.value)
     const dot = output.uml(out)
+    console.log(dot)
     
     hpccWasm.graphviz.layout(dot, "svg", "dot").then(svg => {
         graph.innerHTML = svg;

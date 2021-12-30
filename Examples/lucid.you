@@ -1,0 +1,18 @@
+User
+Customer : User
+- ShoppingCart<1,*> carts
+- Order<1,*> orders
++ getCarts()
++ getOrders()
+
+Administrator : User
+
+ShoppingCart
+
+ShippingInfo
+
+Order
+- ShippingInfo shippingInfo
+- OrderDetails orderDetails
+
+OrderDetails

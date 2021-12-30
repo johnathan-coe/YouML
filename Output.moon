@@ -49,13 +49,17 @@ Output =
                 addln "]"
 
             for _, field in ipairs(c.fields)
-                if field.aggregation
-                    add "#{field.type} -> #{name} [arrowhead=odiamond"
-                    add ", taillabel=\"#{field.otherCardinality}  \"" if field.otherCardinality
-                    add ", headlabel=\"#{field.selfCardinality}  \"" if field.selfCardinality
+                if field.aggregation or field.composition or field.association
+                    add "#{field.type} -> #{name} [arrowhead="
+                    
+                    -- Get the appropriate arrow head
+                    add "odiamond" if field.aggregation
+                    add "diamond" if field.composition
+                    add "none" if field.association
+
+                    add ", taillabel=\"#{field.otherCardinality}    \"" if field.otherCardinality
+                    add ", headlabel=\"#{field.selfCardinality}    \"" if field.selfCardinality
                     addln "]"
-                else if field.association
-                    addln "#{field.type} -> #{name} [arrowhead=none]"
 
         addln "}"
 
