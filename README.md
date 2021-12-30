@@ -5,7 +5,7 @@ Build UML diagrams quickly
 Owner
 - string name
 + getName()
-+ IAnimal[] pet
++ IAnimal[1,*] pet
 
 IAnimal
 - int legs
@@ -14,10 +14,10 @@ IAnimal
 + getName()
 
 Dog : IAnimal
-+ void bark()
++ bark()
 
 Cat : IAnimal
-+ void meow()
++ meow()
 
 Type
 : HELLO
