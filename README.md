@@ -2,16 +2,25 @@
 Build UML diagrams quickly
 
 ```
-Animal
+Owner
+- string name
++ getName()
++ IAnimal[] pet
+
+IAnimal
 - int legs
 - string name 
+- Type type
++ getName()
 
-# A dog is an animal
-Dog : Animal
-- void bark()
+Dog : IAnimal
++ void bark()
 
-# A cat is an animal
-Cat : Animal
-- void meow()
+Cat : IAnimal
++ void meow()
+
+Type
+: HELLO
+: WORLD
 ```
 ![Output UML](example.png)
