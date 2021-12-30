@@ -14,7 +14,9 @@ Parser =
                     if string.sub(l, -2) == "()"
                         table.insert(parsed[currentClass].methods, Method(l))
                     else
-                        table.insert(parsed[currentClass].fields, Field(l))  
+                        table.insert(parsed[currentClass].fields, Field(l))
+                when ":"
+                    table.insert(parsed[currentClass].notes, l\match(":%s*([a-zA-Z]+)"))
                 when "#", ""
                     nil
                 else
@@ -24,6 +26,10 @@ Parser =
 
         for _, c in pairs(parsed)
             c.extends = parsed[c.extends] if c.extends
+            
+            for _, f in pairs(c.fields)
+                if parsed[f.type]
+                    f.association = true
                 
         return parsed
 

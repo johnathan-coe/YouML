@@ -16,6 +16,9 @@ Output =
             if String.startsWith(name, "I")
                 add "\\l\\<\\<interface\\>\\>"
 
+            if #c.notes > 0
+                add "\\l\\<\\<enumeration\\>\\>"
+
             if #c.fields > 0
                 add "|"
                 for _, field in ipairs(c.fields)
@@ -32,6 +35,12 @@ Output =
                     add " : #{method.returnType}" if method.returnType
                     add "\\l"
 
+            if #c.notes > 0
+                add "|"
+                for _, note in ipairs(c.notes)
+                    add note
+                    add "\\l"
+
             addln "}\"\n]"
 
             if c.extends
@@ -42,6 +51,8 @@ Output =
             for _, field in ipairs(c.fields)
                 if field.aggregation
                     addln "#{field.type} -> #{name} [arrowhead=odiamond]"
+                else if field.association
+                    addln "#{field.type} -> #{name} [arrowhead=none]"
 
         addln "}"
 
