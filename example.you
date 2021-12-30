@@ -1,11 +1,12 @@
 Owner
 - string name
 + getName()
-+ IAnimal pets[]
++ IAnimal[] pet
 
 IAnimal
 - int legs
 - string name 
+- Type type
 + getName()
 
 Dog : IAnimal
@@ -13,3 +14,7 @@ Dog : IAnimal
 
 Cat : IAnimal
 + void meow()
+
+Type
+: HELLO
+: WORLD
