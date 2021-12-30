@@ -50,7 +50,10 @@ Output =
 
             for _, field in ipairs(c.fields)
                 if field.aggregation
-                    addln "#{field.type} -> #{name} [arrowhead=odiamond]"
+                    add "#{field.type} -> #{name} [arrowhead=odiamond"
+                    add ", taillabel=\"#{field.otherCardinality}  \"" if field.otherCardinality
+                    add ", headlabel=\"#{field.selfCardinality}  \"" if field.selfCardinality
+                    addln "]"
                 else if field.association
                     addln "#{field.type} -> #{name} [arrowhead=none]"
 
