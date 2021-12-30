@@ -12,17 +12,28 @@ Parser =
             switch string.sub(l, 1, 1)
                 when "-", "+", "*"
                     if string.sub(l, -2) == "()"
-                        table.insert(parsed[currentClass].methods, Method(l))
+                        e, m = pcall(Method, l)
+                        if e
+                            table.insert(parsed[currentClass].methods, m)
+                        else
+                            print("Couldn't parse #{l}")
                     else
-                        table.insert(parsed[currentClass].fields, Field(l))
+                        e, f = pcall(Field, l)
+                        if e
+                            table.insert(parsed[currentClass].fields, f)
+                        else
+                            print("Couldn't parse #{l}")
                 when ":"
                     table.insert(parsed[currentClass].notes, l\match(":%s*([a-zA-Z]+)"))
                 when "#", ""
                     nil
                 else
-                    c = Class(l)
-                    parsed[c.name] = c
-                    currentClass = c.name
+                    e, c = pcall(Class, l)
+                    if e
+                        parsed[c.name] = c
+                        currentClass = c.name
+                    else
+                        print("Couldn't parse #{l}")
 
         for _, c in pairs(parsed)
             c.extends = parsed[c.extends] if c.extends

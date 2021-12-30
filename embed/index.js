@@ -5,9 +5,10 @@ const graph = document.getElementById("graph")
 let parser, output
 
 const factory = new LuaFactory()
-factory.createEngine().then(async (l) => await run(l))
+factory.createEngine({traceAllocations: false}).then(async (l) => await run(l))
 
 async function run(lua) {
+    console.log(lua)
     await lua.doString(YouML)
     const dist = lua.global.get("__DISTILLER")
 
