@@ -1,6 +1,8 @@
 return class Field
     new: (line) =>
-        visibility, @type, bracket, cardinality, @name = line\match("([-+*])%s*([a-zA-Z]+)(%[*)([%d%-,%*]*)%]*%s+([a-zA-Z]+)%s*")
+        -- + type[1,*] name
+        pattern = "([-+])%s*" .. "([a-zA-Z]+)" .. "(%[*)" .. "([%d%-,%*]*)" .. "%]*%s+" .. "([a-zA-Z]+)"
+        visibility, @type, bracket, cardinality, @name = line\match(pattern)
         @public = visibility == "+"
         @array = bracket == "["
 

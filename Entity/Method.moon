@@ -1,6 +1,9 @@
 return class Method
     new: (line) =>
-        visibility, @returnType, @name = line\match("([+-])%s*([^,]+)%s+([^,]+)%(%)%s*")
+        -- + type name()
+        pattern = "([+-])%s*([^,]+)%s+([^,]+)%(%)%s*"
+        visibility, @returnType, @name = line\match(pattern)
         if not @returnType
             visibility, @name = line\match("([+-])%s*([^,]+)%(%)%s*")
+            
         @public = visibility == "+"

@@ -10,7 +10,7 @@ Parser =
 
         for l in String.lines(string)    
             switch string.sub(l, 1, 1)
-                when "-", "+", "*"
+                when "-", "+"
                     if string.sub(l, -2) == "()"
                         e, m = pcall(Method, l)
                         if e

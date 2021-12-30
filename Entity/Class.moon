@@ -1,6 +1,7 @@
 return class Class
     new: (line) =>
-        @name, @extends = line\match("([^,]+) : ([^,]+)")
+        -- Class : Interface
+        @name, @extends = line\match("([a-zA-Z]+)%s*:%s*([a-zA-Z]+)%s*")
         @name = line if not @name
             
         @fields = {}
