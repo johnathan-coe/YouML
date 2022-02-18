@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouML</title>
+    <script src="https://unpkg.com/@hpcc-js/wasm@0.3.11/dist/index.min.js"></script>
+    <script>
+        var hpccWasm = window["@hpcc-js/wasm"];
+    </script>
+    
+    <!-- Lua-->
+    <script src="YouML.js"></script>
+   
+</head>
+<body>
+    <div style="display: flex">
+        <div>
+            <textarea id="input" rows="60" cols="60" name="text"></textarea>
+        </div>
+        <div>
+            <div id="graph" style="text-align: center;"></div>
+        </div>
+    </div>
+
+    <!-- The glue -->
+    <script src="bundle.js"></script>
+</body>
+</html>

@@ -1,21 +1,24 @@
 #!/bin/sh
-moonc -t out/ *.moon Entity/*.moon Util/*.moon
+moonc -t out/ src/*.moon src/Entity/*.moon src/Util/*.moon
 
 cd out
 
 # Merge into a single file
-lua-distill --input main.lua > /dev/null
+lua-distill --input src/main.lua > /dev/null
 echo $?
 
-cd ../embed
+cd ..
+
+rm -r bin
+mkdir bin
+
+cp embed/index.html bin/
 
 # Pull in wasmoon
-browserify index.js -o bundle.js
+browserify embed/index.js -o bin/bundle.js
 
 # Shove lua code into a global js string in YouML.js
-rm YouML.js
-echo "var YouML = \`" >> YouML.js
-cat ../out/out.min.lua >> YouML.js
-echo "\`" >> YouML.js
-sed -i 's/\\/\\\\/g' YouML.js
-#sed -i ':a;N;$!ba;s/\n/\\n/g' YouML.js
+echo "var YouML = \`" >> bin/YouML.js
+cat out/out.min.lua >> bin/YouML.js
+echo "\`" >> bin/YouML.js
+sed -i 's/\\/\\\\/g' bin/YouML.js

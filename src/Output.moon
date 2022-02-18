@@ -56,9 +56,9 @@ Output =
                     add "odiamond" if field.aggregation
                     add "diamond" if field.composition
                     add "none" if field.association
-
-                    add ", taillabel=\"#{field.otherCardinality}    \"" if field.otherCardinality
-                    add ", headlabel=\"#{field.selfCardinality}    \"" if field.selfCardinality
+                    
+                    add ", taillabel=\"#{field.otherCardinality\gsub("*", "\\*")}    \"" if field.otherCardinality
+                    add ", headlabel=\"#{field.selfCardinality\gsub("*", "\\*")}    \"" if field.selfCardinality
                     addln "]"
 
         addln "}"
